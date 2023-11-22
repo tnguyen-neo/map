@@ -1,0 +1,28 @@
+<div
+  [ngClass]="isMenuShow ? 'w-[10rem]' : 'w-[3.5rem]'"
+  class="relative min-h-[calc(100vh-2rem)] h-full grid gap-2 content-start px-2 py-3 border-r bg-white transition-all"
+>
+  <a
+    *ngFor="let item of linkItems"
+    [routerLink]="item.path"
+    class="relative flex items-center rounded-sm p-2 min-w-max select-none transition font-medium hover:bg-gray-100"
+    [ngClass]="[
+      isActive(item.path) ? 'text-primary-600 font-semibold bg-primary-100' : ''
+    ]"
+    [title]="item.label"
+  >
+    <div class="flex items-center gap-3">
+      <i class="{{ item.icon }} text-xl"></i>
+      <span *ngIf="isMenuShow || sidebarVisible">
+        {{ item.label }}
+      </span>
+    </div>
+  </a>
+
+  <i
+    (click)="isMenuShow = !isMenuShow"
+    class="{{ getMenuIcon() }}
+      absolute z-10 top-4 right-0 translate-x-1/2 translate-y-full p-2 text-gray-400 bg-white rounded-full shadow cursor-pointer"
+    style="font-size: 0.75rem"
+  ></i>
+</div>

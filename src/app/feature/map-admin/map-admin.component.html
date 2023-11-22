@@ -1,0 +1,47 @@
+<div class="location-container grid lg:grid-cols-2 gap-x-20 gap-y-10">
+  <div
+    *ngFor="let item of data"
+    class="border border-gray-300 rounded-md p-4 bg-white min-w-min"
+  >
+    <div class="grid gap-4">
+      <span class="flex justify-between gap-4">
+        <span class="flex gap-2">
+          <a routerLink="#" class="text-blue-400 hover:cursor-pointer"
+            >#{{ item.id }}</a
+          >
+          <span class="font-medium">{{ item.type | sentenceCase }}</span>
+          <span>{{ item.name }}</span>
+        </span>
+
+        <span [ngClass]="item.status">
+          {{ item.status | sentenceCase }}
+        </span>
+      </span>
+
+      <span class="flex justify-between items-center gap-4 truncate">
+        <span [title]="item.address" class="truncate">{{ item.address }}</span>
+        <span class="flex gap-2">
+          <button
+            (click)="confirm()"
+            class="btn btn-sm btn-secondary-success"
+            [disabled]="!isActive(item)"
+          >
+            Approve
+          </button>
+          <button
+            (click)="reject()"
+            class="btn btn-sm btn-destructive-secondary-gray"
+            [disabled]="!isActive(item)"
+          >
+            Deny
+          </button>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<p-toast
+  showTransitionOptions="250ms ease-out"
+  hideTransitionOptions="200ms ease-in"
+></p-toast>
