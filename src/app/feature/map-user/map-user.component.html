@@ -1,12 +1,38 @@
 <div class="h-full bg-teal-100">
   <div class="grid gap-4">
     <div class="flex gap-4">
-      <div class="w-1/2">
-        <div class="w-[30rem] h-[20rem] bg-error-200"></div>
+      <div class="w-2/3 grid gap-4">
+        <div class="w-full h-[20rem] bg-error-200"></div>
+
+        <div class="grid gap-2">
+          <span *ngFor="let loc of locations" class="grid grid-cols-3 gap-2">
+            <span class="col-span-2">{{ loc.name }}</span>
+            <span [ngClass]="loc.status">{{ loc.status }}</span>
+          </span>
+        </div>
       </div>
-      <div class="w-1/2 grid gap-2">
-        <div class="text-gray-700 font-medium">Latitude</div>
-        <div class="text-gray-700 font-medium">Longitude</div>
+
+      <div class="w-1/3">
+        <div class="grid gap-2">
+          <div class="grid grid-cols-3 gap-2 text-gray-700 font-medium">
+            <span>Latitude</span>
+            <input
+              type="text"
+              pInputText
+              [(ngModel)]="lat"
+              class="col-span-2"
+            />
+          </div>
+          <div class="grid grid-cols-3 gap-2 text-gray-700 font-medium">
+            <span>Longitude</span>
+            <input
+              type="text"
+              pInputText
+              [(ngModel)]="long"
+              class="col-span-2"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>

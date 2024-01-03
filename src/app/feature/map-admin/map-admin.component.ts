@@ -12,15 +12,39 @@ export class MapAdminComponent {
   toast = inject(CustomToast);
   data = Locations;
 
+  Status = ApprovalStatus;
+
   isActive(item: any) {
-    return item.status === ApprovalStatus.PENDING;
+    // return item.status === ApprovalStatus.PENDING;
+    return true;
   }
 
-  confirm() {
-    this.toast.success('Done', 'Confirmed');
+  pend(item: any) {
+    this.setStatus(item, ApprovalStatus.PENDING);
   }
 
-  reject() {
-    this.toast.error('Done', 'Rejected');
+  approve(item: any) {
+    this.setStatus(item, ApprovalStatus.APPROVAL);
+  }
+
+  deny(item: any) {
+    this.setStatus(item, ApprovalStatus.DENIED);
+  }
+
+  setStatus(item: any, status: ApprovalStatus) {
+    const loc = this.data.find((a: any) => a.id === item.id);
+    if (!loc) return;
+
+    loc.status = status;
+    switch (status) {
+      case ApprovalStatus.PENDING:
+        this.toast.warn('Done', 'Item has been pended');
+        break;
+      case ApprovalStatus.APPROVAL:
+        this.toast.success('Done', 'Item has been approved');
+        break;
+      case ApprovalStatus.DENIED:
+        this.toast.error('Done', 'Item has been denied');
+    }
   }
 }

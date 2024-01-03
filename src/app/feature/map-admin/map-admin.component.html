@@ -22,14 +22,21 @@
         <span [title]="item.address" class="truncate">{{ item.address }}</span>
         <span class="flex gap-2">
           <button
-            (click)="confirm()"
+            (click)="setStatus(item, Status.PENDING)"
+            class="btn btn-sm btn-secondary-gray"
+            [disabled]="!isActive(item)"
+          >
+            Pend
+          </button>
+          <button
+            (click)="setStatus(item, Status.APPROVAL)"
             class="btn btn-sm btn-secondary-success"
             [disabled]="!isActive(item)"
           >
             Approve
           </button>
           <button
-            (click)="reject()"
+            (click)="setStatus(item, Status.DENIED)"
             class="btn btn-sm btn-destructive-secondary-gray"
             [disabled]="!isActive(item)"
           >

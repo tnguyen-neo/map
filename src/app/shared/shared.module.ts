@@ -7,11 +7,12 @@ import { RouterModule } from '@angular/router';
 import { SentenceCasePipe } from '../core/pipes/sentence-case.pipe';
 import { CustomToast } from '../core/utilities/custom-toast.util';
 import { MessageService } from 'primeng/api';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [HeaderComponent, SidebarComponent],
-  imports: [CommonModule, CoreModule, RouterModule],
-  exports: [HeaderComponent, SidebarComponent, SentenceCasePipe],
+  imports: [CommonModule, CoreModule, RouterModule, FormsModule],
+  exports: [HeaderComponent, SidebarComponent, SentenceCasePipe, FormsModule],
   providers: [CustomToast, MessageService],
 })
 export class SharedModule {}

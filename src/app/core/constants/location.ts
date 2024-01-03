@@ -22,7 +22,7 @@ export const Locations = [
     },
     address: '456 Education Avenue, Townsville',
     type: LocationType.UNI,
-    status: ApprovalStatus.DENY,
+    status: ApprovalStatus.DENIED,
   },
   {
     id: 3,

@@ -1,0 +1,11 @@
+.pending {
+  @apply text-warning-400;
+}
+
+.denied {
+  @apply text-error-400;
+}
+
+.approval {
+  @apply text-success-400;
+}
